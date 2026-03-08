@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "281294050658",
+    "project_id": "kidcreds-777e4",
+    "storage_bucket": "kidcreds-777e4.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:281294050658:android:b8612e87b3ec0e32f8083b",
+        "android_client_info": {
+          "package_name": "com.example.kidcreds"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCP0M8DzLh6X0-d7GelfAfDw6M4-ZOWILg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
