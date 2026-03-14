@@ -3,6 +3,9 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
+    alias(libs.plugins.ksp)
+    alias(libs.plugins.dagger.hilt.android)
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -61,4 +64,13 @@ dependencies {
     implementation(libs.androidx.compose.icons)
     implementation(platform("com.google.firebase:firebase-bom:34.10.0"))
     implementation("com.google.firebase:firebase-analytics")
+
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.ksp)
+    implementation(libs.androidx.room.ktx)
+    implementation(libs.hilt.android)
+    ksp(libs.hilt.android.compiler)
+    implementation(libs.hilt.compose)
+    implementation(libs.compose.navigation)
+    implementation(libs.kotlinx.serialization.json)
 }
