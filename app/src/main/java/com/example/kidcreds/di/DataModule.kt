@@ -1,8 +1,12 @@
 package com.example.kidcreds.di
 
 import android.content.Context
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
 import com.example.kidcreds.Const.USER_DATABASE
+import com.example.kidcreds.data.datastore.KidCredsPrefDatastore
 import com.example.kidcreds.data.local.database.UserDatabase
 import dagger.Module
 import dagger.Provides
@@ -10,6 +14,7 @@ import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
+private val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "log_in")
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -31,4 +36,8 @@ object DataModule {
     @Provides
     fun provideDao(userDatabase: UserDatabase) = userDatabase.userDao()
 
+
+    @Provides
+    @Singleton
+    fun provideDatastore(@ApplicationContext context: Context): DataStore<Preferences> = context.dataStore
 }

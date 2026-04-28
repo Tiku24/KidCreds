@@ -1,6 +1,5 @@
 plugins {
     alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
     id("com.google.gms.google-services")
     alias(libs.plugins.ksp)
@@ -37,9 +36,7 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
+
     buildFeatures {
         compose = true
     }
@@ -73,4 +70,8 @@ dependencies {
     implementation(libs.hilt.compose)
     implementation(libs.compose.navigation)
     implementation(libs.kotlinx.serialization.json)
+    testImplementation(libs.truth)
+    implementation(libs.datastore.prep)
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.11.0-rc01")
+    testImplementation("io.mockk:mockk:1.14.9")
 }
