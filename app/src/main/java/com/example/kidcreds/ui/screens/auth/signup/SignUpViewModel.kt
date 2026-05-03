@@ -24,7 +24,7 @@ class SignUpViewModel @Inject constructor(
     val event = _event.asSharedFlow()
 
     fun updateCreateUserAccount(userEntity: UserEntity){
-        viewModelScope.launch(Dispatchers.IO) {
+        viewModelScope.launch {
             if (userEntity.email.isBlank() || userEntity.password.isBlank() || userEntity.name.isBlank()){
                 _event.emit(SignUpEvent.ShowError("Please fill in all fields"))
             }else{

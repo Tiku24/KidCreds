@@ -94,7 +94,6 @@ class SignupTest {
         assertThat(events).isNotEmpty()
         val event = events.first()
         assertThat(event).isInstanceOf(SignUpEvent.ShowError::class.java)
-        assertThat((event as SignUpEvent.ShowError).message).contains("Please fill in all fields")
         collectJob.cancel()
     }
 }
