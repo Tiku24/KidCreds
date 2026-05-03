@@ -17,8 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SignUpViewModel @Inject constructor(
-    private val userRepo: UserRepo,
-    private val kidCredsPrefDatastore: KidCredsPrefDatastore
+    private val userRepo: UserRepo
 ): ViewModel() {
 
     private val _event = MutableSharedFlow<SignUpEvent>()
