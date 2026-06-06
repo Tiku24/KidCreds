@@ -1,6 +1,8 @@
 package com.example.kidcreds.di
 
+import com.example.kidcreds.data.repository.ChoreRepo
 import com.example.kidcreds.data.repository.UserRepo
+import com.example.kidcreds.data.repositoryimpl.ChoreRepoImpl
 import com.example.kidcreds.data.repositoryimpl.UserRepoImpl
 import dagger.Binds
 import dagger.Module
@@ -15,4 +17,8 @@ abstract class AppModule {
     @Singleton
     @Binds
     abstract fun bindUserRepository(userRepoImpl: UserRepoImpl): UserRepo
+
+    @Singleton
+    @Binds
+    abstract fun bindChoreRepository(choreRepoImpl: ChoreRepoImpl): ChoreRepo
 }
