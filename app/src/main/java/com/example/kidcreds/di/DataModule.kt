@@ -6,8 +6,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.preferencesDataStore
 import androidx.room.Room
 import com.example.kidcreds.Const.USER_DATABASE
-import com.example.kidcreds.data.datastore.KidCredsPrefDatastore
-import com.example.kidcreds.data.local.database.UserDatabase
+import com.example.kidcreds.data.local.database.KidCredsDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,11 +21,11 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideRoomDatabase(@ApplicationContext context: Context): UserDatabase {
+    fun provideRoomDatabase(@ApplicationContext context: Context): KidCredsDatabase {
         return Room
             .databaseBuilder(
                 context = context,
-                klass = UserDatabase::class.java,
+                klass = KidCredsDatabase::class.java,
                 name = USER_DATABASE
             )
             .fallbackToDestructiveMigration(false)
@@ -34,7 +33,10 @@ object DataModule {
     }
 
     @Provides
-    fun provideDao(userDatabase: UserDatabase) = userDatabase.userDao()
+    fun provideDao(kidCredsDatabase: KidCredsDatabase) = kidCredsDatabase.userDao()
+
+    @Provides
+    fun provideChoreDao(kidCredsDatabase: KidCredsDatabase) = kidCredsDatabase.choreDao()
 
 
     @Provides

@@ -32,9 +32,9 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -42,9 +42,7 @@ import androidx.navigation.NavController
 import com.example.kidcreds.R
 import com.example.kidcreds.data.local.table.UserEntity
 import com.example.kidcreds.ui.components.AppTextField
-import com.example.kidcreds.ui.navigation.CreateAccount
 import com.example.kidcreds.ui.navigation.LogInAccount
-import com.example.kidcreds.ui.navigation.Routes
 import com.example.kidcreds.ui.screens.auth.login.TextGray
 import com.example.kidcreds.ui.theme.KidCredsTheme
 import kotlinx.coroutines.flow.collectLatest
@@ -135,15 +133,15 @@ fun SignUpContent(
         Surface(
             modifier = Modifier.fillMaxWidth(),
             shape = RoundedCornerShape(28.dp),
-            color = MaterialTheme.colorScheme.onBackground
+            color = MaterialTheme.colorScheme.surface
         ) {
             Column(modifier = Modifier
-                .background(MaterialTheme.colorScheme.background)
                 .padding(24.dp)) {
 
-                Text("Full Name", fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onBackground)
+                Text("Full Name", fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onBackground, modifier = Modifier.fillMaxWidth())
                 Spacer(modifier = Modifier.height(8.dp))
                 AppTextField(
+                    modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(focusedTextColor = MaterialTheme.colorScheme.onBackground, unfocusedTextColor = MaterialTheme.colorScheme.onBackground, focusedBorderColor = MaterialTheme.colorScheme.surfaceTint),
                     value = name,
                     onValueChange = onNameChange,
@@ -153,9 +151,10 @@ fun SignUpContent(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 // Email Field
-                Text("Email", fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onBackground)
+                Text("Email", fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onBackground, modifier = Modifier.fillMaxWidth())
                 Spacer(modifier = Modifier.height(8.dp))
                 AppTextField(
+                    modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(focusedTextColor = MaterialTheme.colorScheme.onBackground, unfocusedTextColor = MaterialTheme.colorScheme.onBackground, focusedBorderColor = MaterialTheme.colorScheme.surfaceTint),
                     value = email,
                     onValueChange = onEmailChange,
@@ -165,13 +164,15 @@ fun SignUpContent(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 // Password Field
-                Text("Password", fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onBackground)
+                Text("Password", fontWeight = FontWeight.SemiBold, color = MaterialTheme.colorScheme.onBackground, modifier = Modifier.fillMaxWidth())
                 Spacer(modifier = Modifier.height(8.dp))
                 AppTextField(
+                    modifier = Modifier.fillMaxWidth(),
                     colors = OutlinedTextFieldDefaults.colors(focusedTextColor = MaterialTheme.colorScheme.onBackground, unfocusedTextColor = MaterialTheme.colorScheme.onBackground, focusedBorderColor = MaterialTheme.colorScheme.surfaceTint),
                     value = password,
                     onValueChange = onPasswordChange,
                     placeholder = { Text("••••••••") },
+                    visualTransformation = PasswordVisualTransformation(),
                     trailingIcon = {
                         Icon(Icons.Default.Visibility, contentDescription = null, tint = TextGray)
                     }

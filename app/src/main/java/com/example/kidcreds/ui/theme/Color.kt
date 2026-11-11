@@ -218,6 +218,17 @@ val surfaceContainerHighDarkHighContrast = Color(0xFF363C3E)
 val surfaceContainerHighestDarkHighContrast = Color(0xFF424849)
 val buttonBlue = Color(0xFF4A72E8)
 
+// Chore Screen Specific Colors
+val choreHeaderGradientStart = Color(0xFFFF6B6B)
+val choreHeaderGradientEnd = Color(0xFFFF8E8E)
+val choreHeaderGradientStartDark = Color(0xFF8B2E2E)
+val choreHeaderGradientEndDark = Color(0xFF9E4E4E)
+val choreBackgroundGradientStart = Color(0xFF4DB6AC)
+val choreBackgroundGradientEnd = Color(0xFFE0F2F1)
+val mustBadgeColor = Color(0xFFFFCDD2)
+val optionalBadgeColor = Color(0xFFB2DFDB)
+val pointsYellow = Color(0xFFFFD54F)
+
 
 
 

@@ -13,3 +13,6 @@ object LogInAccount : Routes
 
 @Serializable
 object HomeScreen : Routes
+
+@Serializable
+object AddChoreScreen
