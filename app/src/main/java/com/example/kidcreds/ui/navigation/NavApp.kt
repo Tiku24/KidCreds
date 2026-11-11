@@ -15,6 +15,7 @@ import com.example.kidcreds.ui.screens.auth.signup.CreateUserAccountScreenUI
 import com.example.kidcreds.ui.screens.auth.login.LogInUserAccountScreenUI
 import com.example.kidcreds.ui.screens.auth.login.LogInViewModel
 import com.example.kidcreds.ui.screens.auth.signup.SignUpViewModel
+import com.example.kidcreds.ui.screens.chore.AddChoreScreenUI
 import com.example.kidcreds.ui.screens.chore.ChoreScreenUI
 import com.example.kidcreds.ui.screens.chore.ChoreViewModel
 
@@ -36,13 +37,16 @@ fun NavApp(
 
     NavHost(modifier = modifier.fillMaxSize(), navController = navController, startDestination = if (isLoggedIn == true) HomeScreen else LogInAccount) {
         composable<HomeScreen> {
-            ChoreScreenUI(choreViewModel)
+            ChoreScreenUI(choreViewModel, navController = navController)
         }
         composable<CreateAccount> {
             CreateUserAccountScreenUI(vm = signUpViewModel, navController = navController)
         }
         composable<LogInAccount> {
             LogInUserAccountScreenUI(vm = logInViewModel, navController = navController)
+        }
+        composable<AddChoreScreen> {
+            AddChoreScreenUI(onBackClick = { navController.popBackStack() }, vm = choreViewModel)
         }
     }
 }

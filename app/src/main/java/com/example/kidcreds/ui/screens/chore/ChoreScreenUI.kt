@@ -28,19 +28,23 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.kidcreds.data.local.table.ChoreEntity
 import com.example.kidcreds.data.local.table.ChoreFrequency
 import com.example.kidcreds.data.local.table.ChorePriority
+import com.example.kidcreds.ui.navigation.AddChoreScreen
+import com.example.kidcreds.ui.navigation.Routes
 import com.example.kidcreds.ui.theme.*
 
 @Composable
-fun ChoreScreenUI(choreViewModel: ChoreViewModel) {
+fun ChoreScreenUI(choreViewModel: ChoreViewModel,navController: NavController) {
     val chores by choreViewModel.uiState.collectAsStateWithLifecycle()
-    ChoreScreenContent(chores = chores)
+    ChoreScreenContent(chores = chores, navController = navController)
 }
 
 @Composable
-fun ChoreScreenContent(chores: List<ChoreEntity>) {
+fun ChoreScreenContent(navController: NavController,chores: List<ChoreEntity>) {
     val colorScheme = MaterialTheme.colorScheme
     
     val totalChores = chores.size
@@ -92,7 +96,7 @@ fun ChoreScreenContent(chores: List<ChoreEntity>) {
                 )
                 
                 Button(
-                    onClick = { /* TODO */ },
+                    onClick = { navController.navigate(AddChoreScreen) },
                     colors = ButtonDefaults.buttonColors(containerColor = Color(0xFF4DB6AC)),
                     shape = RoundedCornerShape(12.dp),
                     contentPadding = PaddingValues(horizontal = 12.dp, vertical = 4.dp)
@@ -159,13 +163,13 @@ fun HeaderSection(total: Int, completed: Int, points: Int) {
     ) {
         Column {
             Text(
-                text = "KidChores",
+                text = "KidCreds",
                 style = MaterialTheme.typography.headlineLarge,
                 fontWeight = FontWeight.Bold,
                 color = Color.White
             )
             Text(
-                text = "Track chores, earn rewards! 👑",
+                text = "Track chores, earn rewards! ",
                 style = MaterialTheme.typography.bodyMedium,
                 color = Color.White.copy(alpha = 0.8f)
             )
@@ -304,13 +308,6 @@ fun ChoreCard(chore: ChoreEntity) {
                 .fillMaxWidth(),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Circle Checkbox placeholder
-            Box(
-                modifier = Modifier
-                    .size(28.dp)
-                    .clip(CircleShape)
-                    .background(Color.LightGray.copy(alpha = 0.3f))
-            )
             // Icon
             val icon = when (chore.title) {
                 "Brush Teeth" -> Icons.Default.CleaningServices
@@ -419,7 +416,7 @@ fun ChoreScreenLightPreview() {
         )
     )
     KidCredsTheme(darkTheme = false) {
-        ChoreScreenContent(chores = mockChores)
+        ChoreScreenContent(chores = mockChores,navController = rememberNavController())
     }
 }
 
@@ -437,6 +434,6 @@ fun ChoreScreenDarkPreview() {
         )
     )
     KidCredsTheme(darkTheme = true) {
-        ChoreScreenContent(chores = mockChores)
+        ChoreScreenContent(chores = mockChores, navController = rememberNavController())
     }
 }

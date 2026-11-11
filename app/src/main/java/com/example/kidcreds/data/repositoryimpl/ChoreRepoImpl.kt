@@ -16,6 +16,7 @@ class ChoreRepoImpl @Inject constructor(private val choreDao: ChoreDao): ChoreRe
     override fun getChores(): Flow<List<ChoreEntity>> = choreDao.getAllChores()
 
     override suspend fun addChore(chore: List<ChoreEntity>) = choreDao.insertChores(chores = chore)
+    override suspend fun insertChore(chore: ChoreEntity) = choreDao.insertChore(chore)
 
     override suspend fun toggleChoreStatus(chore: ChoreEntity) = choreDao.updateChore(chore)
 
